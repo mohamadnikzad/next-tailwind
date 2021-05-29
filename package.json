@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.1",
+    "axios": "^0.21.1",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styled-icons": "^10.33.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.4",

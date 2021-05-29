@@ -18,9 +18,20 @@
 }
 @layer components {
   .page-wrapper {
+    @apply flex;
+    @apply flex-grow;
     @apply w-full;
     @apply h-full;
     @apply max-w-[1920px];
     @apply mx-auto;
+  }
+  .nav-title {
+    @apply font-bold text-2xl leading-7 transition-colors duration-200 ease-in-out;
+  }
+  .nav-title:hover {
+    @apply text-[rgba(244,244,244,.3)];
+  }
+  .nav-item {
+    @apply flex flex-col mt-5;
   }
 }

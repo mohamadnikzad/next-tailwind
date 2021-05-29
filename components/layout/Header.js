@@ -3,7 +3,7 @@ import { BellIcon, DotsHorizontalIcon, PlusIcon, XIcon, MenuIcon } from '@heroic
 import Link from 'next/link'
 import { useState } from 'react'
 
-const Navbar = () => {
+const Header = () => {
     const [open, setOpen] = useState(false)
 
     return (
@@ -57,4 +57,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Header

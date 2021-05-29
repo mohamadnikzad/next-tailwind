@@ -1,0 +1,1 @@
+export const url = 'https://rawg.io/api/games/lists/main'
