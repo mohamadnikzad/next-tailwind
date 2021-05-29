@@ -17,9 +17,9 @@ const Header = () => {
             <div className="flex px-4 py-3 md:px-9 md:py-5  flex-grow justify-between items-center">
                 {/* nav left */}
                 <div className="flex h-10 md:h-16 justify-center items-center mr-5">
-                    <a href='#' className='flex tracking-[5px] font-black text-lg'>
-                        RAWG
-                    </a>
+                    <div className='flex tracking-[5px] font-black text-lg'>
+                        <Link href='/'>RAWG</Link>
+                    </div>
                 </div>
 
                 {/*nav center */}

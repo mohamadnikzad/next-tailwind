@@ -5,17 +5,13 @@ import GameCard from "./GameCard"
 import Sidebar from "./layout/Sidebar"
 
 
-const PageContent = ({ gamesList, nextPage }) => {
-    const [gameList, setGameList] = useState(gamesList)
+const PageContent = ({ gamesList, nextPage, genres }) => {
+    const [gameList, setGameList] = useState([])
     const [next, setNext] = useState(nextPage)
-    // useEffect(() => {
-
-    // }, [nextpage])
+    useEffect(() => {
+        setGameList(gamesList)
+    }, [gamesList])
     const loadMore = async () => {
-        // axios.get(next).then(data =>
-        //     setGameList([...gameList, ...data.data.results])
-        //     setNext(data.data.next)
-        // ).catch(err => console.log(err))
         try {
             const data = await axios.get(next)
             setGameList([...gameList, ...data.data.results])
@@ -27,7 +23,7 @@ const PageContent = ({ gamesList, nextPage }) => {
     return (
         <main className='page-wrapper  justify-center lg:max-w-full lg:justify-start lg:px-10'>
             {/* sidebar */}
-            <Sidebar />
+            <Sidebar genres={genres} />
             {/* gamesList */}
             <div className="flex flex-grow flex-col max-w-[480px] lg:max-w-full mt-4 text-center lg:text-left">
                 <div className="flex flex-col ">
