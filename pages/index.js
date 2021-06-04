@@ -10,7 +10,7 @@ export default function Home({ data, genres }) {
   const nextPage = data.next
   const genresList = genres.results
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Nz Vampire Gaming</title>
         <link rel="icon" href="/favicon.ico" />

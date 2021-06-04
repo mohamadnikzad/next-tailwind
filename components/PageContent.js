@@ -37,7 +37,7 @@ const PageContent = ({ gamesList, nextPage, genres }) => {
                 </div>
                 <div className='flex flex-col w-full lg:grid lg:grid-cols-3 lg:gap-x-5 xl:grid-cols-4 xl:gap-x-7'>
                     {gameList.map(game =>
-                        <GameCard key={game.id} name={game.name} bg={game.background_image} />)}
+                        <GameCard key={game.id} name={game.name} bg={game.background_image} id={game.id} />)}
                 </div>
                 <div className="text-center">
                     <button

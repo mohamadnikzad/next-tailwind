@@ -17,7 +17,7 @@ const Sidebar = ({ genres }) => {
             <aside className='flex w-[12.5rem] mt-10 mr-5 '>
                 <nav className='flex flex-col flex-grow'>
                     <div className='flex flex-col  space-y-6'>
-                        <div className='nav-title'><Link className='' href='/home'>Home</Link></div>
+                        <div className='nav-title'><Link className='' href='/'>Home</Link></div>
                         <div className='nav-title'><Link href='#'>Reviews</Link></div>
                     </div>
                     <div className="nav-item ">
@@ -68,7 +68,7 @@ const Sidebar = ({ genres }) => {
                     <div className="nav-item">
                         <div className='nav-title mb-2'><Link className='' href='/home'>Genres</Link></div>
                         <ul className="flex flex-col flex-grow my-3 space-y-2">
-                            {genres.map(genre =>
+                            {genres?.map(genre =>
                                 <li key={genre.id} className='cursor-pointer group'>
                                     <Link href={`/genres?genre=${genre.id}`}>
                                         <div className='flex items-center'>

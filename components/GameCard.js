@@ -2,15 +2,17 @@ import { PlusIcon } from "@heroicons/react/solid"
 import { Windows } from "@styled-icons/boxicons-logos"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 
 
-const GameCard = ({ name, bg }) => {
+const GameCard = ({ name, bg, id }) => {
+    const router = useRouter()
     const myLoader = () => {
         return bg
     }
     return (
-        <div className='mt-6'>
-            <div>
+        <div className='mt-6 cursor-pointer' onClick={() => router.push(`/games/${id}`)}>
+            <div >
                 <Image className="rounded-t-xl" loader={myLoader} src='./images/dota.jpg' layout='responsive' height={1080} width={1920} />
             </div>
             <div className='p-4 flex flex-col flex-grow bg-[#202020] space-y-3 rounded-b-xl'>
