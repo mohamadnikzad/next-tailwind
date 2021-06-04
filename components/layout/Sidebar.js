@@ -9,9 +9,10 @@ import { Crown } from '@styled-icons/fa-solid'
 import { ControllerPlay } from '@styled-icons/entypo'
 import { GameController } from '@styled-icons/ionicons-solid'
 import { Ghost } from '@styled-icons/boxicons-solid'
+import { genres } from '../../util/genresList'
 
 
-const Sidebar = ({ genres }) => {
+const Sidebar = () => {
     return (
         <div className='hidden lg:flex'>
             <aside className='flex w-[12.5rem] mt-10 mr-5 '>
@@ -68,15 +69,15 @@ const Sidebar = ({ genres }) => {
                     <div className="nav-item">
                         <div className='nav-title mb-2'><Link className='' href='/home'>Genres</Link></div>
                         <ul className="flex flex-col flex-grow my-3 space-y-2">
-                            {genres?.map(genre =>
-                                <li key={genre.id} className='cursor-pointer group'>
-                                    <Link href={`/genres?genre=${genre.id}`}>
+                            {genres?.map((genre, i) =>
+                                <li key={i} className='cursor-pointer group'>
+                                    <Link href={`/genres?genre=${genre}`}>
                                         <div className='flex items-center'>
-                                            <div className="flex justify-center items-center w-8 h-8 mr-2 rounded-lg">
+                                            {/* <div className="flex justify-center items-center w-8 h-8 mr-2 rounded-lg">
                                                 <Image className='rounded-lg w-8 h-8 min-h-8 object-cover'
                                                     src={genre.image_background} width={32} height={32} objectFit='cover' />
-                                            </div>
-                                            <span >{genre.name}</span>
+                                            </div> */}
+                                            <span className='capitalize'>{genre}</span>
                                         </div>
                                     </Link>
                                 </li>)}
