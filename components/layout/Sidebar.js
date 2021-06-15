@@ -10,6 +10,11 @@ import { ControllerPlay } from '@styled-icons/entypo'
 import { GameController } from '@styled-icons/ionicons-solid'
 import { Ghost } from '@styled-icons/boxicons-solid'
 import { genres } from '../../util/genresList'
+import { Playstation } from 'styled-icons/fa-brands'
+import { LogoXbox } from 'styled-icons/ionicons-solid'
+import { Android, Windows } from 'styled-icons/boxicons-logos'
+import { Ios } from 'styled-icons/simple-icons'
+import { PhoneIphone } from 'styled-icons/material'
 
 
 const Sidebar = () => {
@@ -36,6 +41,16 @@ const Sidebar = () => {
                             <NavListItem title='Whishlist' Icon={GiftIcon} />
                             <NavListItem title='My library' Icon={CollectionIcon} />
                             <NavListItem title='Pepale you follow' Icon={UserGroupIcon} />
+                        </ul>
+                    </div>
+                    <div className="nav-item">
+                        <div className='nav-title mb-2'><Link className='' href='/home'>Platfroms</Link></div>
+                        <ul className="flex flex-col flex-grow my-3 space-y-3">
+                            <NavListItem href='/platforms/2' title='PlayStation' Icon={Playstation} />
+                            <NavListItem href='/platforms/3' title='Xbox' Icon={LogoXbox} />
+                            <NavListItem href='/platforms/1' title='PC' Icon={Windows} />
+                            <NavListItem href='/platforms/4' title='IOS' Icon={PhoneIphone} />
+                            <NavListItem href='/platforms/8' title='Anroid' Icon={Android} />
                         </ul>
                     </div>
                     <div className="nav-item">

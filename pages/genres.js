@@ -8,14 +8,14 @@ const genres = ({ data }) => {
     const nextPage = data.next
     // const genresList = genres.results
     return (
-        <div>
+        <>
             <Head>
-                <title>haha</title>
+                <title>With SSR</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
             <PageContent gamesList={gamesList} nextPage={nextPage} />
-        </div>
+        </>
     )
 }
 
