@@ -2,11 +2,13 @@ import Head from "next/head"
 import Header from "../components/layout/Header"
 import PageContent from "../components/PageContent"
 import { url } from "../util/url"
+import { useRouter } from "next/router"
 
 const genres = ({ data }) => {
+    const router = useRouter()
+    const { genre } = router.query
     const gamesList = data.results
     const nextPage = data.next
-    const genresList = genres.results
     return (
         <>
             <Head>
@@ -14,7 +16,7 @@ const genres = ({ data }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <PageContent gamesList={gamesList} nextPage={nextPage} />
+            <PageContent gamesList={gamesList} nextPage={nextPage} pageTitle={genre} />
         </>
     )
 }
@@ -25,18 +27,7 @@ export async function getServerSideProps(context) {
     const genre = context.query.genre
     const res = await fetch(`https://api.rawg.io/api/games?genres=${genre}&key=${process.env.API_KEY}`)
     const data = await res.json()
-    // let genresRes, genres
-    // try {
-    //     genresRes = await fetch(`https://api.rawg.io/api/genres?key=${process.env.API_KEY}`)
-    //     genres = await genresRes.json()
-    // } catch (error) {
-    //     console.log(error)
-    // }
-    // if (!data) {
-    //     return {
-    //         notFound: true,
-    //     }
-    // }
+
 
     return {
         props: { data }, // will be passed to the page component as props

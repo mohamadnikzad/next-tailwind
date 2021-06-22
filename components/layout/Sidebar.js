@@ -16,9 +16,27 @@ import { Android, Windows } from 'styled-icons/boxicons-logos'
 import { Ios } from 'styled-icons/simple-icons'
 import { PhoneIphone } from 'styled-icons/material'
 import { Skull } from 'styled-icons/boxicons-solid'
+import { useEffect, useState } from 'react'
+import { ChevronDown, ChevronUp } from 'styled-icons/boxicons-regular'
 
 
 const Sidebar = () => {
+    const less = genres.filter((genre, i) => i < 3)
+    const [genresState, setGenresState] = useState(less)
+    const [isMore, setIsMore] = useState(false)
+
+    // const genreList = genres?.map((genre, i) =>
+    //     <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
+
+    // )
+    useEffect(() => {
+        isMore && setGenresState(genres)
+        !isMore && setGenresState(less)
+    }, [isMore])
+    const toggle = () => {
+        setIsMore(!isMore)
+
+    }
     return (
         <div className='hidden lg:flex'>
             <aside className='flex w-[12.5rem] mt-10 mr-5 '>
@@ -28,7 +46,7 @@ const Sidebar = () => {
                         <div className='nav-title'><Link href='#'>Reviews</Link></div>
                     </div>
                     <div className="nav-item ">
-                        <Link className='mb-4' href='#'>
+                        <Link className='mb-4' href='#' disable>
                             <div className='flex items-center'>
                                 <div className='nav-title overflow-hidden 
                                 overflow-ellipsis whitespace-nowrap max-w-[150px] cursor-pointer mr-2'>mohamadnikzad</div>
@@ -45,7 +63,7 @@ const Sidebar = () => {
                         </ul>
                     </div>
                     <div className="nav-item">
-                        <div className='nav-title mb-2'><Link className='' href='/home'>Platfroms</Link></div>
+                        <div className='nav-title mb-2'>Platfroms</div>
                         <ul className="flex flex-col flex-grow my-3 space-y-3">
                             <NavListItem href='/platforms/2' title='PlayStation' Icon={Playstation} />
                             <NavListItem href='/platforms/3' title='Xbox' Icon={LogoXbox} />
@@ -54,6 +72,33 @@ const Sidebar = () => {
                             <NavListItem href='/platforms/8' title='Anroid' Icon={Android} />
                         </ul>
                     </div>
+
+                    <div className="nav-item">
+                        <div className='nav-title mb-2'><span >Top</span></div>
+                        <ul className="flex flex-col flex-grow my-3 space-y-3">
+                            <NavListItem title='Best of the year' href='/best-of-the-year' Icon={Trophy} />
+                            <NavListItem title='Popular in 2020' Icon={BarChartAlt2} href='/popular-in-2020' />
+                            <NavListItem title='All time top 250' Icon={Crown} href='/all-time-top' />
+                        </ul>
+                    </div>
+                    <div className="nav-item">
+                        <div className='nav-title mb-2'><Link className='' href='/home'>Genres</Link></div>
+                        <ul className="flex flex-col flex-grow my-3 space-y-2">
+                            {genresState?.map((genre, i) =>
+                                <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
+
+                            )}
+                            <li className='cursor-pointer group' onClick={toggle}>
+                                <div className='flex items-center'>
+                                    <div className="flex justify-center items-center w-8 h-8 mr-3 bg-[rgba(244,244,244,.1)] rounded-md transition-colors duration-200 ease-in-out group-hover:bg-white group-hover:text-black">
+                                        {!isMore ? <ChevronDown className="w-6" /> : <ChevronUp />}
+                                    </div>
+                                    <span >{!isMore ? 'Show More' : 'show less'}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='nav-title mt-4'><Link href='/'>All Games</Link></div>
                     <div className="nav-item">
                         <div className='nav-title mb-2'><Link className='' href='/home'>New Releases</Link></div>
                         <ul className="flex flex-col flex-grow my-3 space-y-3">
@@ -64,15 +109,6 @@ const Sidebar = () => {
                         </ul>
                     </div>
                     <div className="nav-item">
-                        <div className='nav-title mb-2'><span >Top</span></div>
-                        <ul className="flex flex-col flex-grow my-3 space-y-3">
-                            <NavListItem title='Best of the year' Icon={Trophy} />
-                            <NavListItem title='Popular in 2020' Icon={BarChartAlt2} />
-                            <NavListItem title='All time top 250' Icon={Crown} />
-                        </ul>
-                    </div>
-                    <div className='nav-title mt-4'><Link className='' href='/home'>All Games</Link></div>
-                    <div className="nav-item">
                         <div className='nav-title mb-2'><Link className='' href='/home'>Browse</Link></div>
                         <ul className="flex flex-col flex-grow my-3 space-y-3">
                             <NavListItem title='Platforms' Icon={GameController} />
@@ -82,27 +118,7 @@ const Sidebar = () => {
                             <NavListItem title='Genres' Icon={Ghost} />
                         </ul>
                     </div>
-                    <div className="nav-item">
-                        <div className='nav-title mb-2'><Link className='' href='/home'>Genres</Link></div>
-                        <ul className="flex flex-col flex-grow my-3 space-y-2">
-                            {genres?.map((genre, i) =>
-                                // <li key={i} className='cursor-pointer group'>
-                                //     <Link href={`/genres?genre=${genre}`}>
-                                //         <div className='flex items-center'>
-                                //             <div className="flex justify-center items-center w-8 h-8 mr-2 rounded-lg bg-red-900">
-                                //                 {/* <Image className='rounded-lg w-8 h-8 min-h-8 object-cover'
-                                //                     src={genre.image_background} width={32} height={32} objectFit='cover' /> */}
-                                //                 <Ghost className='rounded-lg w-8 h-8 min-h-8 flex' />
-                                //             </div>
-                                //             <span className='capitalize'>{genre}</span>
-                                //         </div>
-                                //     </Link>
-                                // </li>
-                                <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
 
-                            )}
-                        </ul>
-                    </div>
                 </nav>
             </aside>
         </div>

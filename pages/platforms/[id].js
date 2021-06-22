@@ -8,7 +8,7 @@ const Platform = ({ platform }) => {
     return (
         <>
             <Header />
-            <PageContent gamesList={gamesList} nextPage={nextPage} />
+            <PageContent gamesList={gamesList} nextPage={nextPage} pageTitle='by platform' />
         </>
     )
 }

@@ -6,11 +6,7 @@ import Sidebar from "../../components/layout/Sidebar";
 import Link from "next/link";
 
 
-
-
-
 const GameDetail = ({ game }) => {
-    console.log(game)
     return (
         <div>
             <Head>

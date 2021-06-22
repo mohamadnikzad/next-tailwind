@@ -5,7 +5,7 @@ import GameCard from "./GameCard"
 import Sidebar from "./layout/Sidebar"
 
 
-const PageContent = ({ gamesList, nextPage }) => {
+const PageContent = ({ gamesList, nextPage, pageTitle = 'New and trending' }) => {
     const [gameList, setGameList] = useState([])
     const [next, setNext] = useState(nextPage)
     useEffect(() => {
@@ -27,7 +27,7 @@ const PageContent = ({ gamesList, nextPage }) => {
             {/* gamesList */}
             <div className="flex flex-grow flex-col max-w-[480px] lg:max-w-full mt-4 text-center lg:text-left">
                 <div className="flex flex-col ">
-                    <h1 className='text-4xl font-bold lg:text-7xl mb-3'>New and trending</h1>
+                    <h1 className='text-4xl font-bold lg:text-7xl mb-3 capitalize'>{pageTitle}</h1>
                     <p>Based on player counts and release date</p>
                 </div>
                 <div className="flex my-7">
@@ -37,7 +37,7 @@ const PageContent = ({ gamesList, nextPage }) => {
                 </div>
                 <div className='flex flex-col w-full lg:grid lg:grid-cols-3 lg:gap-x-5 xl:grid-cols-4 xl:gap-x-7'>
                     {gameList.map(game =>
-                        <GameCard key={game.id} name={game.name} bg={game.background_image} id={game.id} />)}
+                        <GameCard key={game.id} name={game.name} bg={game.background_image} id={game.id} score={game.metacritic} platforms={game.parent_platforms} />)}
                 </div>
                 <div className="text-center">
                     <button

@@ -1,10 +1,40 @@
 import { SearchIcon } from '@heroicons/react/solid'
+import SearchGameCard from '../SearchGameCard'
 import { BellIcon, DotsHorizontalIcon, PlusIcon, XIcon, MenuIcon } from '@heroicons/react/solid'
+import axios from 'axios'
 import Link from 'next/link'
-import { useState } from 'react'
-
+import { useEffect, useState } from 'react'
 const Header = () => {
+    const api_key = process.env.API_KEY
     const [open, setOpen] = useState(false)
+    const [qry, setQry] = useState('')
+    const [games, setGames] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        let cancel;
+        if (qry !== '') {
+            setLoading(true)
+            axios({
+                method: 'GET',
+                url: `https://api.rawg.io/api/games?key=2b7489f5d63f41faaa47d771e897e3a3`,
+                params: { search: qry, page: 1, page_size: 20 },
+                cancelToken: new axios.CancelToken(c => cancel = c)
+            }).then(res => {
+                // setGames(prevGames => {
+                //     return [...prevGames, ...res.data.results]
+                // })
+                setGames([...res.data.results])
+                setLoading(false)
+            }).catch(err => {
+
+                if (axios.isCancel(err)) return
+            })
+        }
+        if (qry !== '') return () => cancel && cancel()
+    }, [qry])
+
+    console.log(games)
 
     return (
         <header className='flex w-full h-full relative '>
@@ -18,18 +48,21 @@ const Header = () => {
                 {/* nav left */}
                 <div className="flex h-10 md:h-16 justify-center items-center mr-5">
                     <div className='flex tracking-[5px] font-black text-lg'>
-                        <Link href='/'>RAWG</Link>
+                        <Link href='/'>Nikzad</Link>
                     </div>
                 </div>
 
                 {/*nav center */}
-                <div className='className="flex flex-grow-0 md:flex-grow h-10 md:h-16  mr-5'>
+                <div className='className="flex flex-grow-0 md:flex-grow h-10 md:h-16  mr-5 relative'>
                     <form className="text-black w-full h-full justify-center items-center relative flex">
-                        <input type="text" placeholder='Search'
+                        <input type="search" placeholder='Search' onChange={e => setQry(e.target.value)}
                             className='rounded-3xl h-7 md:h-11 w-48 md:w-full group
-                        bg-[rgba(244,244,244,.16)] transition-all ease-in-out duration-300 hover:bg-gray-200 focus:bg-gray-200 flex-grow-1 md:flex-grow-2 pl-9 pr-4  select-none focus:border-none focus:outline-none' />
-                        <SearchIcon className='group-hover:text-black group-visited::text-black absolute w-5 left-2  text-gray-500' />
+                        bg-[rgba(244,244,244,.16)] transition-all ease-in-out duration-300 hover:bg-gray-200 focus:bg-gray-200 flex-grow-1 md:flex-grow-2 pl-9 pr-4  select-none focus:border-none focus:outline-none hover:text-black focus:text-black visited:text-black text-gray-500'  />
+                        <SearchIcon className='group-hover:text-black group-visited:text-black absolute w-5 left-2  text-gray-500' />
                     </form>
+                    {qry && <div className="flex flex-col space-y-5 p-5 absolute z-50 -bottom-24.5 w-full min-h-[100px] max-h-[27rem] bg-black rounded-2xl overflow-y-auto">
+                        {loading ? 'Loading ...' : games.map(game => <SearchGameCard key={game.id} id={game.id} name={game.name} platforms={game.parent_platforms} img={game.background_image} />)}
+                    </div>}
                 </div>
                 {/*nav right */}
                 <div className='flex h-10 md:h-16 justify-center items-center mr-5'>

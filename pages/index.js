@@ -12,7 +12,7 @@ export default function Home({ data, genres }) {
   return (
     <div>
       <Head>
-        <title>Nz Vampire Gaming</title>
+        <title>Nikzad</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
