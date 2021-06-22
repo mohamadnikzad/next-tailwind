@@ -6,7 +6,7 @@ import { url } from "../util/url"
 const genres = ({ data }) => {
     const gamesList = data.results
     const nextPage = data.next
-    // const genresList = genres.results
+    const genresList = genres.results
     return (
         <>
             <Head>

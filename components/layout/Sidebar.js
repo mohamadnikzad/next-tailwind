@@ -15,6 +15,7 @@ import { LogoXbox } from 'styled-icons/ionicons-solid'
 import { Android, Windows } from 'styled-icons/boxicons-logos'
 import { Ios } from 'styled-icons/simple-icons'
 import { PhoneIphone } from 'styled-icons/material'
+import { Skull } from 'styled-icons/boxicons-solid'
 
 
 const Sidebar = () => {
@@ -85,17 +86,21 @@ const Sidebar = () => {
                         <div className='nav-title mb-2'><Link className='' href='/home'>Genres</Link></div>
                         <ul className="flex flex-col flex-grow my-3 space-y-2">
                             {genres?.map((genre, i) =>
-                                <li key={i} className='cursor-pointer group'>
-                                    <Link href={`/genres?genre=${genre}`}>
-                                        <div className='flex items-center'>
-                                            {/* <div className="flex justify-center items-center w-8 h-8 mr-2 rounded-lg">
-                                                <Image className='rounded-lg w-8 h-8 min-h-8 object-cover'
-                                                    src={genre.image_background} width={32} height={32} objectFit='cover' />
-                                            </div> */}
-                                            <span className='capitalize'>{genre}</span>
-                                        </div>
-                                    </Link>
-                                </li>)}
+                                // <li key={i} className='cursor-pointer group'>
+                                //     <Link href={`/genres?genre=${genre}`}>
+                                //         <div className='flex items-center'>
+                                //             <div className="flex justify-center items-center w-8 h-8 mr-2 rounded-lg bg-red-900">
+                                //                 {/* <Image className='rounded-lg w-8 h-8 min-h-8 object-cover'
+                                //                     src={genre.image_background} width={32} height={32} objectFit='cover' /> */}
+                                //                 <Ghost className='rounded-lg w-8 h-8 min-h-8 flex' />
+                                //             </div>
+                                //             <span className='capitalize'>{genre}</span>
+                                //         </div>
+                                //     </Link>
+                                // </li>
+                                <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
+
+                            )}
                         </ul>
                     </div>
                 </nav>
