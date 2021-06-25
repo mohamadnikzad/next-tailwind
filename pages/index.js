@@ -5,7 +5,9 @@ import axios from "axios"
 import { url } from "../util/url"
 
 
+
 export default function Home({ data, genres }) {
+
   const gamesList = data.results
   const nextPage = data.next
   const genresList = genres.results

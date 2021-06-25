@@ -4,12 +4,15 @@ import { BellIcon, DotsHorizontalIcon, PlusIcon, XIcon, MenuIcon } from '@heroic
 import axios from 'axios'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { signIn, signOut, useSession } from 'next-auth/client'
 const Header = () => {
     const api_key = process.env.API_KEY
     const [open, setOpen] = useState(false)
     const [qry, setQry] = useState('')
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(false)
+    const [session] = useSession()
+    console.log(session)
 
     useEffect(() => {
         let cancel;
@@ -34,7 +37,6 @@ const Header = () => {
         if (qry !== '') return () => cancel && cancel()
     }, [qry])
 
-    console.log(games)
 
     return (
         <header className='flex w-full h-full relative '>
@@ -72,7 +74,8 @@ const Header = () => {
                     </div>
                     <div className="hidden md:flex justify-between items-center space-x-2 ml-3 text-sm">
                         <div className="flex mr-1">
-                            <Link href='/'>My library</Link>
+                            {/* <Link href='/'>My library</Link> */}
+                            <button onClick={() => signIn()}>Sign in</button>
                         </div>
                         <BellIcon className='w-6 text-white' />
                         <PlusIcon className='w-8 text-white' />

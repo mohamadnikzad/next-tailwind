@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Header from "../../components/layout/Header"
 import PageContent from "../../components/PageContent"
 
@@ -7,6 +8,10 @@ const Platform = ({ platform }) => {
     const nextPage = platform.next
     return (
         <>
+            <Head>
+                <title>NZ</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <Header />
             <PageContent gamesList={gamesList} nextPage={nextPage} pageTitle='by platform' />
         </>
