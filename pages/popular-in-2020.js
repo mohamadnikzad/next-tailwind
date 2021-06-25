@@ -13,7 +13,7 @@ const PopularIn2020 = ({ data }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <PageContent gamesList={gamesList} nextPage={nextPage} pageTitle='All Time Top 250' />
+            <PageContent gamesList={gamesList} nextPage={nextPage} pageTitle='Popular in 2020' />
         </>
     )
 }
