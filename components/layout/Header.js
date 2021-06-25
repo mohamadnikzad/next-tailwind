@@ -68,19 +68,19 @@ const Header = () => {
                 </div>
                 {/*nav right */}
                 <div className='flex h-10 md:h-16 justify-center items-center mr-5'>
-                    <div
+                    {session && <div
                         className="flex justify-center items-center w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-r from-[#b1305c] to-[#fd867d]">
-                        <span className='font-black text-sm md:text-base'>M</span>
-                    </div>
+                        <span className='font-black text-sm md:text-base'>{session?.user?.name.substring(0, 1).toLocaleUpperCase()}</span>
+                    </div>}
                     <div className="hidden md:flex justify-between items-center space-x-2 ml-3 text-sm">
                         <div className="flex mr-1">
                             {/* <Link href='/'>My library</Link> */}
-                            <button onClick={() => signIn()}>Sign in</button>
+                            {session ? <button className='underline' onClick={() => signOut()}>Logout</button > : <button className='underline' onClick={() => signIn()}>Sign in</button>}
                         </div>
                         <BellIcon className='w-6 text-white' />
                         <PlusIcon className='w-8 text-white' />
                         <div className="flex ml-1">
-                            <Link href='/'>API</Link>
+                            <Link href='/'>Doc</Link>
                         </div>
                         <DotsHorizontalIcon className='w-4 ml-1 text-white' />
                     </div>

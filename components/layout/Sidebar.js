@@ -18,13 +18,15 @@ import { PhoneIphone } from 'styled-icons/material'
 import { Skull } from 'styled-icons/boxicons-solid'
 import { useEffect, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'styled-icons/boxicons-regular'
+import { useSession } from 'next-auth/client'
 
 
 const Sidebar = () => {
     const less = genres.filter((genre, i) => i < 3)
     const [genresState, setGenresState] = useState(less)
     const [isMore, setIsMore] = useState(false)
-
+    const [session, loading] = useSession()
+    console.log(session);
     // const genreList = genres?.map((genre, i) =>
     //     <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
 
@@ -37,6 +39,7 @@ const Sidebar = () => {
         setIsMore(!isMore)
 
     }
+
     return (
         <div className='hidden lg:flex'>
             <aside className='flex w-[12.5rem] mt-10 mr-5 '>
@@ -45,14 +48,14 @@ const Sidebar = () => {
                         <div className='nav-title'><Link className='' href='/'>Home</Link></div>
                         <div className='nav-title'><Link href='#'>Reviews</Link></div>
                     </div>
-                    <div className="nav-item ">
+                    {session && <div className="nav-item ">
                         <Link className='mb-4' href='#' disable>
                             <div className='flex items-center'>
                                 <div className='nav-title overflow-hidden 
-                                overflow-ellipsis whitespace-nowrap max-w-[150px] cursor-pointer mr-2'>mohamadnikzad</div>
+                                overflow-ellipsis whitespace-nowrap max-w-[150px] cursor-pointer mr-2'>{session?.user?.name}</div>
                                 <div
                                     className="flex justify-center items-center w-9 h-9  rounded-full bg-gradient-to-r from-[#b1305c] to-[#fd867d]">
-                                    <span className='font-black text-sm md:text-base'>M</span>
+                                    <span className='font-black text-sm md:text-base'>{session?.user?.name.substring(0, 1).toLocaleUpperCase()}</span>
                                 </div>
                             </div>
                         </Link>
@@ -61,7 +64,7 @@ const Sidebar = () => {
                             <NavListItem title='My library' Icon={CollectionIcon} />
                             <NavListItem title='Pepale you follow' Icon={UserGroupIcon} />
                         </ul>
-                    </div>
+                    </div>}
                     <div className="nav-item">
                         <div className='nav-title mb-2'>Platfroms</div>
                         <ul className="flex flex-col flex-grow my-3 space-y-3">
