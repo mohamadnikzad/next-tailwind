@@ -5,18 +5,19 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { Playstation } from "styled-icons/remix-line"
 import { Xbox } from "styled-icons/simple-icons"
+import { resizeImage } from "../util/helperFunctions"
 import PlatFromIcon from "./PlatFromIcon"
 
 
 const GameCard = ({ name, bg, id, score, platforms }) => {
     const router = useRouter()
     const myLoader = () => {
-        return bg
+        return resizeImage(bg, 420)
     }
     return (
         <div className='mt-6 cursor-pointer' onClick={() => router.push(`/games/${id}`)}>
             <div >
-                <Image className="rounded-t-xl bg-[#202020]" loader={myLoader} src='./images/dota.jpg' layout='responsive' height={1080} width={1920} />
+                <Image alt={name} className="rounded-t-xl bg-[#202020]" loader={myLoader} src='./images/dota.jpg' layout='responsive' height={1080} width={1920} />
             </div>
             <div className='p-4 flex flex-col flex-grow bg-[#202020] space-y-3 rounded-b-xl'>
                 <div className="flex items-center justify-between">

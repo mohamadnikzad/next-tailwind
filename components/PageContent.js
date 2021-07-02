@@ -31,11 +31,11 @@ const PageContent = ({ gamesList, nextPage, pageTitle = 'New and trending' }) =>
                     <p>Based on player counts and release date</p>
                 </div>
                 <div className="flex my-7">
-                    <button className="flex space-x-1 items-center bg-[rgba(244,244,244,0.07)] py-2 px-3 rounded-lg text-sm">
+                    <button className="flex ml-4 space-x-1 items-center bg-[rgba(244,244,244,0.07)] py-2 px-3 rounded-lg text-sm">
                         <div>Order by :</div> <span className='font-medium'>Relevence</span> <ChevronDownIcon className='w-4' />
                     </button>
                 </div>
-                <div className='flex flex-col w-full lg:grid lg:grid-cols-3 lg:gap-x-5 xl:grid-cols-4 xl:gap-x-7'>
+                <div className='flex flex-col px-4 w-full lg:grid lg:grid-cols-3 lg:gap-x-5 xl:grid-cols-4 xl:gap-x-7'>
                     {gameList.map(game =>
                         <GameCard key={game.id} name={game.name} bg={game.background_image} id={game.id} score={game.metacritic} platforms={game.parent_platforms} />)}
                 </div>

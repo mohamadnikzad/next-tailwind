@@ -55,10 +55,10 @@ const Header = () => {
                 </div>
 
                 {/*nav center */}
-                <div className='className="flex flex-grow-0 md:flex-grow h-10 md:h-16  mr-5 relative'>
+                <div className='className="flex flex-grow h-10 md:h-16  mr-5 relative'>
                     <form className="text-black w-full h-full justify-center items-center relative flex">
                         <input type="search" placeholder='Search' onChange={e => setQry(e.target.value)}
-                            className='rounded-3xl h-7 md:h-11 w-48 md:w-full group
+                            className='rounded-3xl h-7 md:h-11 w-full group
                         bg-[rgba(244,244,244,.16)] transition-all ease-in-out duration-300 hover:bg-gray-200 focus:bg-gray-200 flex-grow-1 md:flex-grow-2 pl-9 pr-4  select-none focus:border-none focus:outline-none hover:text-black focus:text-black visited:text-black text-gray-500'  />
                         <SearchIcon className='group-hover:text-black group-visited:text-black absolute w-5 left-2  text-gray-500' />
                     </form>
