@@ -28,7 +28,11 @@ export async function getServerSideProps(context) {
     const res = await fetch(`https://api.rawg.io/api/games?genres=${genre}&key=${process.env.API_KEY}`)
     const data = await res.json()
 
-
+    if (!data) {
+        return {
+            notFound: true,
+        }
+    }
     return {
         props: { data }, // will be passed to the page component as props
     }
