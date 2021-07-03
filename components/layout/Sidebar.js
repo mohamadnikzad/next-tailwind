@@ -26,7 +26,6 @@ const Sidebar = () => {
     const [genresState, setGenresState] = useState(less)
     const [isMore, setIsMore] = useState(false)
     const [session, loading] = useSession()
-    console.log(session);
     // const genreList = genres?.map((genre, i) =>
     //     <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
 

@@ -12,7 +12,6 @@ const Header = () => {
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(false)
     const [session] = useSession()
-    console.log(session)
 
     useEffect(() => {
         let cancel;
