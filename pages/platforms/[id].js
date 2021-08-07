@@ -4,8 +4,8 @@ import Header from "../../components/layout/Header";
 import PageContent from "../../components/PageContent";
 
 const Platform = ({ platform }) => {
-  const gamesList = platform.results;
-  const nextPage = platform.next;
+  const gamesList = platform?.results;
+  const nextPage = platform?.next;
   const router = useRouter();
   if (router.isFallback) {
     return <h3>Loading...</h3>;
