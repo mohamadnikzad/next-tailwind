@@ -30,7 +30,13 @@ export default Platform;
 
 export function getStaticPaths() {
   return {
-    paths: [{ params: { id: "1" } }],
+    paths: [
+      { params: { id: "1" } },
+      { params: { id: "2" } },
+      { params: { id: "3" } },
+      { params: { id: "4" } },
+      { params: { id: "8" } },
+    ],
     fallback: true, //faslse  any other route will return 404
   };
 }

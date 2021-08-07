@@ -37,10 +37,6 @@ const Sidebar = () => {
   const [genresState, setGenresState] = useState(less);
   const [isMore, setIsMore] = useState(false);
   const [session, loading] = useSession();
-  // const genreList = genres?.map((genre, i) =>
-  //     <NavListItem key={i} title={genre} Icon={Skull} href={`/genres?genre=${genre}`} />
-
-  // )
   useEffect(() => {
     isMore && setGenresState(genres);
     !isMore && setGenresState(less);
@@ -55,9 +51,7 @@ const Sidebar = () => {
         <nav className="flex flex-col flex-grow">
           <div className="flex flex-col  space-y-6">
             <div className="nav-title">
-              <Link className="" href="/">
-                Home
-              </Link>
+              <Link href="/">Home</Link>
             </div>
           </div>
           {session && (
