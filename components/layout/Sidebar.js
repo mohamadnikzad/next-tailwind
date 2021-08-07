@@ -62,7 +62,7 @@ const Sidebar = () => {
           </div>
           {session && (
             <div className="nav-item ">
-              <Link className="mb-4" href="#" disable>
+              <Link className="mb-4" passHref={true} href="#" disable>
                 <div className="flex items-center">
                   <div
                     className="nav-title overflow-hidden 
