@@ -56,20 +56,24 @@ const Sidebar = () => {
           </div>
           {session && (
             <div className="nav-item ">
-              <Link className="mb-4" passHref={true} href="#" disable>
-                <div className="flex items-center">
-                  <div
-                    className="nav-title overflow-hidden 
+              <Link passHref={true} href="#">
+                <a className="mb-4">
+                  <div className="flex items-center">
+                    <div
+                      className="nav-title overflow-hidden 
                                 overflow-ellipsis whitespace-nowrap max-w-[150px] cursor-pointer mr-2"
-                  >
-                    {session?.user?.name}
+                    >
+                      {session?.user?.name}
+                    </div>
+                    <div className="flex justify-center items-center w-9 h-9  rounded-full bg-gradient-to-r from-[#b1305c] to-[#fd867d]">
+                      <span className="font-black text-sm md:text-base">
+                        {session?.user?.name
+                          .substring(0, 1)
+                          .toLocaleUpperCase()}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex justify-center items-center w-9 h-9  rounded-full bg-gradient-to-r from-[#b1305c] to-[#fd867d]">
-                    <span className="font-black text-sm md:text-base">
-                      {session?.user?.name.substring(0, 1).toLocaleUpperCase()}
-                    </span>
-                  </div>
-                </div>
+                </a>
               </Link>
               <ul className="flex flex-col flex-grow my-3 space-y-3">
                 <NavListItem title="Whishlist" Icon={GiftIcon} />
@@ -117,8 +121,8 @@ const Sidebar = () => {
           </div>
           <div className="nav-item">
             <div className="nav-title mb-2">
-              <Link className="" href="/home">
-                Genres
+              <Link href="/home">
+                <a>Genres</a>
               </Link>
             </div>
             <ul className="flex flex-col flex-grow my-3 space-y-2">
@@ -145,8 +149,8 @@ const Sidebar = () => {
           </div>
           <div className="nav-item">
             <div className="nav-title mb-2">
-              <Link className="" href="/home">
-                New Releases
+              <Link href="/home">
+                <a> New Releases</a>
               </Link>
             </div>
             <ul className="flex flex-col flex-grow my-3 space-y-3">
@@ -158,8 +162,8 @@ const Sidebar = () => {
           </div>
           <div className="nav-item">
             <div className="nav-title mb-2">
-              <Link className="" href="/home">
-                Browse
+              <Link href="/home">
+                <a>Browse</a>
               </Link>
             </div>
             <ul className="flex flex-col flex-grow my-3 space-y-3">

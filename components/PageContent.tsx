@@ -4,19 +4,35 @@ import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import Sidebar from "./layout/Sidebar";
 
-const PageContent = ({
+interface PProps {
+  gamesList: [];
+  nextPage: string;
+  pageTitle?: string;
+}
+type gameType = {
+  name: string;
+  background_image: string;
+  id: number;
+  metacritic: number;
+  parent_platforms: [any];
+};
+
+const PageContent: React.FC<PProps> = ({
   gamesList,
   nextPage,
   pageTitle = "New and trending",
 }) => {
-  const [gameList, setGameList] = useState([]);
+  const [gameList, setGameList]: any = useState([]);
   const [next, setNext] = useState(nextPage);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setGameList(gamesList);
   }, [gamesList]);
   const loadMore = async () => {
     try {
+      setLoading(true);
       const data = await axios.get(next);
+      setLoading(false);
       setGameList([...gameList, ...data.data.results]);
       setNext(data.data.next);
     } catch (error) {
@@ -42,7 +58,7 @@ const PageContent = ({
           </button>
         </div>
         <div className="flex flex-col px-4 w-full lg:grid lg:grid-cols-3 lg:gap-x-5 xl:grid-cols-4 xl:gap-x-7">
-          {gameList.map((game) => (
+          {gameList.map((game: gameType) => (
             <GameCard
               key={game.id}
               name={game.name}
@@ -58,7 +74,7 @@ const PageContent = ({
             className="rounded-md py-2 px-8   my-8 bg-[rgba(244,244,244,.1)] hover:bg-[rgba(244,244,244,.2)] text-[rgba(244,244,244,.7)]"
             onClick={loadMore}
           >
-            Load more
+            {loading ? "Loading ..." : "Load More"}
           </button>
         </div>
       </div>

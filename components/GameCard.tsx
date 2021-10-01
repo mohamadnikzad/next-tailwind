@@ -9,7 +9,15 @@ import { resizeImage } from "../util/helperFunctions";
 import PlatFromIcon from "./PlatFromIcon";
 import dota2 from "../public/images/dota.jpg";
 
-const GameCard = ({ name, bg, id, score, platforms }) => {
+interface PProps {
+  name: string;
+  bg: string;
+  id: number;
+  score: number;
+  platforms: [any];
+}
+
+const GameCard: React.FC<PProps> = ({ name, bg, id, score, platforms }) => {
   const router = useRouter();
   const myLoader = () => {
     return resizeImage(bg, 420);

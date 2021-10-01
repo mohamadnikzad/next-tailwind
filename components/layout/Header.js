@@ -106,7 +106,7 @@ const Header = () => {
         {/* nav left */}
         <div className="flex h-10 md:h-16 justify-center items-center mr-5">
           <div className="flex tracking-[5px] font-black text-lg">
-            <Link href="/">Nikzad</Link>
+            <Link href="/">Sara</Link>
           </div>
         </div>
 
@@ -167,7 +167,11 @@ const Header = () => {
             </div>
             <DotsHorizontalIcon className="w-4 ml-1 text-white" />
           </div>
-          <button className="flex md:hidden" onClick={() => setOpen(true)}>
+          <button
+            aria-label="menu icon"
+            className="flex md:hidden"
+            onClick={() => setOpen(true)}
+          >
             <MenuIcon className=" w-7 ml-2 text-white" />
           </button>
         </div>

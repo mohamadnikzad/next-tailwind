@@ -1,6 +1,14 @@
+import React, { ReactElement } from "react";
 import Link from "next/link";
+import { StyledIcon } from "styled-icons/types";
 
-const NavListItem = ({ title, Icon, href = "/" }) => {
+interface PProps {
+  title: string;
+  Icon: typeof React.Component | StyledIcon;
+  href?: string;
+}
+
+const NavListItem: React.FC<PProps> = ({ title, Icon, href = "/" }) => {
   return (
     <li className="cursor-pointer group">
       <Link href={`${href}`} passHref={true}>
